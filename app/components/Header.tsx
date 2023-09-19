@@ -1,29 +1,41 @@
 "use client";
 import Link from "next/link";
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import NavItems from "../utils/NavItems";
 import { ThemeSwitcher } from "../utils/ThemeSwitcher";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
+import CustomModal from "../utils/CustomModal";
+import Login from "./Auth/Login";
+import SignUp from "./Auth/SignUp";
+import Verification from "./Auth/Verification";
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
   activeItem: number;
+  route: string;
+  setRoute: (route: string) => void;
 };
 
-const Header: FC<Props> = ({ activeItem, setOpen }) => {
-  const [active, setActive] = useState(true);
+const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
+  const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () => {
+  useEffect(() => {
+    const handleScroll = () => {
       if (window.scrollY > 85) {
         setActive(true);
       } else {
         setActive(false);
       }
-    });
-  }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleClose = (e: any) => {
     if (e.target.id === "screen") {
@@ -32,22 +44,24 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
   };
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative mb-[95px]">
       <div
-        className={
+        className={`${
           active
-            ? "dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black fixed top-0 left-0 w-full h-80px z-80 border-b dark:border-[#ffffff1c] shadow-xl transition duration-500"
-            : "w-full border-b dark:border-[#ffffff1c] h-80px z-80 dark:shadow"
-        }
+            ? " dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black"
+            : "dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black"
+        } fixed top-0 left-0 w-full z-80 border-b shadow-xl transition duration-500`}
       >
         <div className="w-[95%] 800px:w-[92%] m-auto py-2 h-full">
           <div className="w-full h-[80px] flex items-center justify-between p-3">
             <div>
               <Link
                 href="/"
-                className="text-[25px] font-Poppins font-1580 text-black dark:text-white"
+                className={`text-[25px] font-Poppins font-1580 text-black ${
+                  active ? "dark:text-white" : "dark:text-white"
+                }`}
               >
-                Elearning
+                StudySync
               </Link>
             </div>
             <div className="flex items-center">
@@ -57,13 +71,17 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
               <div className="md:hidden">
                 <HiOutlineMenuAlt3
                   size={25}
-                  className="cursor-pointer dark:text-white text-black"
+                  className={`cursor-pointer ${
+                    active ? "dark:text-white" : "dark:text-white"
+                  }`}
                   onClick={() => setOpenSidebar(true)}
                 />
               </div>
               <HiOutlineUserCircle
                 size={25}
-                className="hidden 800px:block cursor-pointer dark:text-white text-black"
+                className={`hidden 800px:block cursor-pointer text-black dark:text-white ${
+                  active ? "dark:text-white" : "dark:text-white"
+                }`}
                 onClick={() => setOpen(true)}
               />
             </div>
@@ -72,30 +90,63 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
         {/* Mobile sidebar */}
         {openSidebar && (
           <div
-            className=" fixed w-full h-screen top-0 left-0 z-[99999] dark:bg-[unset] bg-[#00000024]"
+            className="fixed w-full h-screen top-0 left-0 z-[99999] bg-[#00000024]"
             onClick={handleClose}
             id="screen"
           >
             <div className="text-center w-[70%] fixed z-[1999999999] h-screen bg-white dark:bg-slate-900 dark:bg-opacity-90 top-0 right-0">
               <div className="flex flex-col items-center">
-                {" "}
                 {/* Add a flex container */}
                 <NavItems activeItem={activeItem} isMobile={true} />
                 <HiOutlineUserCircle
                   size={25}
-                  className="cursor-pointer ml-5 my-2 text-black dark:text-white"
+                  className={`cursor-pointer ml-5 my-2 ${
+                    active ? "dark:text-white" : "text-black"
+                  }`}
                   onClick={() => setOpen(true)}
                 />
               </div>
               <br />
               <br />
-              <p className="text-[16px] px-2 pl-5 text-black dark:text-white">
+              <p
+                className={`text-[16px] px-2 pl-5 ${
+                  active ? "dark:text-white" : "text-black"
+                }`}
+              >
                 Copyright &copy; 2023 StudySync
               </p>
             </div>
           </div>
         )}
       </div>
+      {route === "Login" && open && (
+        <CustomModal
+          open={open}
+          setOpen={setOpen}
+          setRoute={setRoute}
+          activeItem={activeItem}
+          component={Login}
+        />
+      )}
+      {route === "Sign-Up" && open && (
+        <CustomModal
+          open={open}
+          setOpen={setOpen}
+          setRoute={setRoute}
+          activeItem={activeItem}
+          component={SignUp}
+        />
+      )}
+
+      {route === "Verification" && open && (
+        <CustomModal
+          open={open}
+          setOpen={setOpen}
+          setRoute={setRoute}
+          activeItem={activeItem}
+          component={Verification}
+        />
+      )}
     </div>
   );
 };

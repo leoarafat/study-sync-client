@@ -10,6 +10,7 @@ interface props {}
 const Page: FC<props> = () => {
   const [open, setOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
+  const [route, setRoute] = useState("Login");
 
   return (
     <div>
@@ -18,9 +19,15 @@ const Page: FC<props> = () => {
         description="StudySync is learning platform"
         keywords="Programming, MERN, Redux"
       />
-      <Header open={open} activeItem={activeItem} setOpen={setOpen} />
+      <Header
+        open={open}
+        activeItem={activeItem}
+        setOpen={setOpen}
+        setRoute={setRoute}
+        route={route}
+      />
       <Hero />
-      {/* <Test /> */}
+      <Test />
     </div>
   );
 };

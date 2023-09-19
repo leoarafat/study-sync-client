@@ -4,7 +4,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="w-full  dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black py-12 px-4 1000px:flex items-center mt-[90px]">
+    <div className="dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black py-12 px-4 1000px:flex items-center ">
       {/* Left Side (Image) */}
       <div className="w-1/2">
         <img
