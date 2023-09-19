@@ -114,7 +114,7 @@ const SignUp: FC<Props> = ({ setRoute }) => {
         <div className="w-full mt-5">
           <input type="submit" value="Sign Up" className={`${styles.button}`} />
         </div>
-        <br />
+
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
           Or join with
         </h5>
@@ -132,7 +132,6 @@ const SignUp: FC<Props> = ({ setRoute }) => {
           </span>
         </h5>
       </form>
-      <br />
     </div>
   );
 };

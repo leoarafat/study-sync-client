@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/material";
-
+import styles from "./Modal.module.css";
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -23,9 +23,9 @@ const CustomModal: FC<Props> = ({
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] bg-white dark:bg-slate-900 rounded-[8px] shadow p-4 outline-none ">
+      <div className="max-w-md mx-auto p-4 sm:p-6 lg:p-8 bg-white dark:bg-slate-900 rounded-[8px] shadow outline-none mt-[100px]">
         <Component setOpen={setOpen} setRoute={setRoute} />
-      </Box>
+      </div>
     </Modal>
   );
 };
