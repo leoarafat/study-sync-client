@@ -3,6 +3,8 @@
 import React, { FC, useState } from "react";
 import Heading from "./utils/Heading";
 import Header from "./components/Header";
+import Hero from "./components/Route/Hero";
+import Test from "./components/Test";
 
 interface props {}
 const Page: FC<props> = () => {
@@ -17,6 +19,8 @@ const Page: FC<props> = () => {
         keywords="Programming, MERN, Redux"
       />
       <Header open={open} activeItem={activeItem} setOpen={setOpen} />
+      <Hero />
+      {/* <Test /> */}
     </div>
   );
 };
