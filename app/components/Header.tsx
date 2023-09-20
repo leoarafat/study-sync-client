@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Link from "next/link";
 import React, { FC, useState, useEffect } from "react";
@@ -11,7 +12,10 @@ import Verification from "./Auth/Verification";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import userImage from "../../public/assests/user2.png";
-import { useSocialAuthMutation } from "@/redux/features/auth/authApi";
+import {
+  useLogoutQuery,
+  useSocialAuthMutation,
+} from "@/redux/features/auth/authApi";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 type Props = {
@@ -25,11 +29,15 @@ type Props = {
 const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
+  const [logout, setLogout] = useState(false);
+
+  const {} = useLogoutQuery(undefined, {
+    skip: !logout ? true : false,
+  });
   const { user } = useSelector((state: any) => state.auth);
 
   const { data } = useSession();
   const [socialAuth, { isSuccess, error }] = useSocialAuthMutation();
-  console.log(data, "Social data");
   useEffect(() => {
     if (!user) {
       if (data) {
@@ -40,8 +48,13 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
         });
       }
     }
-    if (isSuccess) {
-      toast.success("Login Successfully");
+    if (data === null) {
+      if (isSuccess) {
+        toast.success("Login Successfully");
+      }
+    }
+    if (data === null) {
+      setLogout(true);
     }
   }, [data, user]);
 
