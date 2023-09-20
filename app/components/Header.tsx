@@ -8,7 +8,12 @@ import CustomModal from "../utils/CustomModal";
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
 import Verification from "./Auth/Verification";
-
+import { useSelector } from "react-redux";
+import Image from "next/image";
+import userImage from "../../public/assests/user2.png";
+import { useSocialAuthMutation } from "@/redux/features/auth/authApi";
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -20,6 +25,25 @@ type Props = {
 const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
+  const { user } = useSelector((state: any) => state.auth);
+
+  const { data } = useSession();
+  const [socialAuth, { isSuccess, error }] = useSocialAuthMutation();
+  console.log(data, "Social data");
+  useEffect(() => {
+    if (!user) {
+      if (data) {
+        socialAuth({
+          email: data?.user?.email,
+          name: data?.user?.name,
+          avatar: data?.user?.image,
+        });
+      }
+    }
+    if (isSuccess) {
+      toast.success("Login Successfully");
+    }
+  }, [data, user]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,13 +101,26 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
                   onClick={() => setOpenSidebar(true)}
                 />
               </div>
-              <HiOutlineUserCircle
-                size={25}
-                className={`hidden 800px:block cursor-pointer text-black dark:text-white ${
-                  active ? "dark:text-white" : "dark:text-white"
-                }`}
-                onClick={() => setOpen(true)}
-              />
+              {user ? (
+                <>
+                  <Link href={`/profile`}>
+                    {" "}
+                    <Image
+                      className="w-[30px] h-[30px] rounded-full cursor-pointer"
+                      src={user?.avatar ? user?.avatar : userImage}
+                      alt=""
+                    />
+                  </Link>
+                </>
+              ) : (
+                <HiOutlineUserCircle
+                  size={25}
+                  className={`hidden 800px:block cursor-pointer text-black dark:text-white ${
+                    active ? "dark:text-white" : "dark:text-white"
+                  }`}
+                  onClick={() => setOpen(true)}
+                />
+              )}
             </div>
           </div>
         </div>

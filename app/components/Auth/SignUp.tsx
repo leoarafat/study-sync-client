@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -9,6 +9,8 @@ import {
 } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { styles } from "../../styles/style";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import toast from "react-hot-toast";
 
 type Props = {
   setRoute: (route: string) => void;
@@ -24,13 +26,31 @@ const schema = Yup.object().shape({
 
 const SignUp: FC<Props> = ({ setRoute }) => {
   const [show, setShow] = useState(false);
+  const [register, { isLoading, isSuccess, error, data }] =
+    useRegisterMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      const message = data?.message || "Registration successful";
+      toast.success(message);
+      setRoute("Verification");
+    }
+    if (error) {
+      if ("data" in error) {
+        const errorData = error as any;
+        console.log(errorData);
+        toast.error(errorData.data.message);
+      }
+    }
+  }, [isSuccess, error, data?.message, setRoute]);
 
   const formik = useFormik({
     initialValues: { name: "", email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ name, email, password }) => {
-      console.log("Form values:", name, email, password);
-      setRoute("Verification");
+      const data = { name, email, password };
+
+      await register(data);
     },
   });
 
@@ -46,7 +66,7 @@ const SignUp: FC<Props> = ({ setRoute }) => {
           </label>
           <input
             type="name"
-            name="name"
+            name=""
             value={values.name}
             onChange={handleChange}
             id="name"
@@ -112,7 +132,11 @@ const SignUp: FC<Props> = ({ setRoute }) => {
           <span className="text-red-500 pt-2 block">{errors.password}</span>
         )}
         <div className="w-full mt-5">
-          <input type="submit" value="Sign Up" className={`${styles.button}`} />
+          <input
+            type="submit"
+            value={isLoading ? "Loading..." : "Sign Up"}
+            className={`${styles.button}`}
+          />
         </div>
 
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">

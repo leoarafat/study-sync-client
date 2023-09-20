@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -9,9 +9,13 @@ import {
 } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { styles } from "../../styles/style";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 type Props = {
   setRoute: (route: string) => void;
+  setOpen: (open: boolean) => void;
 };
 
 const schema = Yup.object().shape({
@@ -21,18 +25,34 @@ const schema = Yup.object().shape({
   password: Yup.string().required("Please enter your password!").min(6),
 });
 
-const Login: FC<Props> = ({ setRoute }) => {
+const Login: FC<Props> = ({ setRoute, setOpen }) => {
   const [show, setShow] = useState(false);
+  const [login, { isLoading, isSuccess, error }] = useLoginMutation();
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Login Successfully!");
+      setOpen(false);
+    }
 
-  const formik = useFormik({
+    if (error) {
+      if ("data" in error) {
+        const errorData = error as any;
+        toast.error(errorData.data.message);
+      } else {
+        console.error("Login error:", error);
+      }
+    }
+  }, [isSuccess, error, setOpen]);
+  const forMik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password }) => {
-      console.log("Form values:", email, password);
+      const data = { email, password };
+      await login(data);
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, touched, values, handleChange, handleSubmit } = forMik;
 
   return (
     <div className="w-full">
@@ -43,7 +63,7 @@ const Login: FC<Props> = ({ setRoute }) => {
         </label>
         <input
           type="email"
-          name="email"
+          name=""
           value={values.email}
           onChange={handleChange}
           id="email"
@@ -89,15 +109,27 @@ const Login: FC<Props> = ({ setRoute }) => {
           )}
         </div>
         <div className="w-full mt-5">
-          <input type="submit" value="Login" className={`${styles.button}`} />
+          <input
+            type="submit"
+            value={isLoading ? "Loading..." : "Login"}
+            className={`${styles.button}`}
+          />
         </div>
         <br />
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
           Or join with
         </h5>
         <div className="flex items-center justify-center my-3">
-          <FcGoogle size={30} className="cursor-pointer mr-2" />
-          <AiFillGithub size={30} className="cursor-pointer ml-2" />
+          <FcGoogle
+            onClick={() => signIn("google")}
+            size={30}
+            className="cursor-pointer mr-2"
+          />
+          <AiFillGithub
+            onClick={() => signIn("github")}
+            size={30}
+            className="cursor-pointer ml-2"
+          />
         </div>
         <h5 className="text-center dark:text-white pt-4 font-Poppins text-[14px]">
           Don't have an account?{" "}
