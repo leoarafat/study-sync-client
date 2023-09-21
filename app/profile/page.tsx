@@ -11,7 +11,7 @@ type Props = {};
 
 const Profile = (props: Props) => {
   const [open, setOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(5);
   const { user } = useSelector((state: any) => state.auth);
   const [route, setRoute] = useState("Login");
   return (
@@ -29,7 +29,10 @@ const Profile = (props: Props) => {
           setRoute={setRoute}
           route={route}
         />
-        <Profiles user={user} />
+
+        <div className="dark:bg-slate-900 bg-opacity-90  bg-white">
+          <Profiles user={user} />
+        </div>
       </Protected>
     </div>
   );

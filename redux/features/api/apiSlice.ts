@@ -6,6 +6,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.SERVER_URL,
   }),
+  tagTypes: ["updateProfile", "updatePassword"],
   endpoints: (builder) => ({
     refreshToken: builder.query({
       query: () => ({
@@ -21,6 +22,7 @@ export const apiSlice = createApi({
         method: "GET",
         credentials: "include" as const,
       }),
+
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;

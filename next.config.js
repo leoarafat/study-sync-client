@@ -8,6 +8,9 @@ const nextConfig = {
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     SECRET: process.env.SECRET,
   },
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
 };
 
 module.exports = nextConfig;

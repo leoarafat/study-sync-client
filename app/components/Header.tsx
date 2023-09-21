@@ -119,9 +119,14 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
                   <Link href={`/profile`}>
                     {" "}
                     <Image
+                      width={30}
+                      height={30}
                       className="w-[30px] h-[30px] rounded-full cursor-pointer"
-                      src={user?.avatar ? user?.avatar : userImage}
+                      src={user?.avatar ? user?.avatar.url : userImage}
                       alt=""
+                      style={{
+                        border: activeItem === 5 ? "2px solid #37a39a" : "",
+                      }}
                     />
                   </Link>
                 </>

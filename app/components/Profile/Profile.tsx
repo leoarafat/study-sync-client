@@ -5,6 +5,8 @@ import SidebarProfile from "./SidebarProfile";
 import { useLogoutQuery } from "@/redux/features/auth/authApi";
 import { redirect } from "next/navigation";
 import { signOut } from "next-auth/react";
+import ProfileInfo from "./ProfileInfo";
+import ChangePassword from "./ChangePassword";
 type Props = {
   user: any;
 };
@@ -35,7 +37,7 @@ const Profile: FC<Props> = ({ user }) => {
   }
 
   return (
-    <div className="w-[85%] flex mx-auto">
+    <div className="w-[85%] flex mx-auto ">
       <div
         className={`w-[60px] 800px:w-[310px] h-[450px] dark:bg-slate-900 bg-opacity-90 border bg-white dark:border-[#ffffff1d] border-[#0000001c] rounded-[5px] dark:shadow-sm shadow-md mt-[80px] mb-[80px] sticky ${
           scroll ? "top-[120px]" : "top-[38px]"
@@ -49,6 +51,16 @@ const Profile: FC<Props> = ({ user }) => {
           logOutHandler={logOutHandler}
         />
       </div>
+      {active === 1 && (
+        <div className="w-full h-full bg-transparent mt-[80px]">
+          <ProfileInfo avatar={avatar} user={user} />
+        </div>
+      )}
+      {active === 2 && (
+        <div className="w-full h-full bg-transparent mt-[80px]">
+          <ChangePassword user={user} />
+        </div>
+      )}
     </div>
   );
 };
