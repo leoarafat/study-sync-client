@@ -3,8 +3,9 @@
 import React, { FC, useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css"; //
-import { Box, Typography, IconButton, Link } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import { useSelector } from "react-redux";
+
 import {
   HomeOutlined as HomeOutlinedIcon,
   ArrowForwardIos as ArrowForwardIosIcon,
@@ -22,20 +23,29 @@ import {
   ManageHistory as ManageHistoryIcon,
   Settings as SettingsIcon,
   ExitToApp as ExitToAppIcon,
+  LogoutOutlined,
 } from "@mui/icons-material";
 import avatarDefault from "../../../../public/assests//user2.png";
 
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 interface ItemProps {
   title: string;
-  to: string;
   icon: JSX.Element;
   selected: string;
   setSelected: any;
+  isCollapsed: boolean;
 }
 
-const Item: FC<ItemProps> = ({ title, to, icon, selected, setSelected }) => {
+const Item: FC<ItemProps> = ({
+  title,
+
+  icon,
+  selected,
+  setSelected,
+  isCollapsed,
+}) => {
   return (
     <MenuItem
       active={selected === title}
@@ -43,8 +53,9 @@ const Item: FC<ItemProps> = ({ title, to, icon, selected, setSelected }) => {
       icon={icon}
       style={{ display: "flex", alignItems: "center", paddingLeft: "20px" }}
     >
-      <Typography className="text-[16px] font-Poppins">{title}</Typography>
-      <Link href={to} />
+      {!isCollapsed && (
+        <Typography className="text-[16px] font-Poppins">{title}</Typography>
+      )}
     </MenuItem>
   );
 };
@@ -90,7 +101,7 @@ const Sidebar: FC = () => {
           color: `${theme !== "dark" && "#000"}`,
         },
       }}
-      className="bg-white dark:bg-[#111C43]"
+      className="dark:bg-slate-900 bg-opacity-90  bg-white"
     >
       <ProSidebar
         collapsed={isCollapsed}
@@ -105,16 +116,24 @@ const Sidebar: FC = () => {
         <MenuItem
           onClick={() => setIsCollapsed(!isCollapsed)}
           icon={isCollapsed ? <ArrowForwardIosIcon /> : undefined}
+          style={{ listStyleType: "none" }}
         >
           {!isCollapsed && (
             <Box
-              display="flex"
               justifyContent="space-between"
-              alignItems="center"
               ml="15px"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                paddingLeft: "20px",
+              }}
             >
-              <Link href="/">
-                <h3 className="text-[25px] font-Poppins uppercase dark:text-white text-black">
+              <Link style={{ textDecoration: "none" }} href="/">
+                <h3
+                  className={`text-[25px] font-Poppins uppercase ${
+                    theme === "dark" ? "text-white" : "text-white"
+                  }`}
+                >
                   StudySync
                 </h3>
               </Link>
@@ -122,7 +141,9 @@ const Sidebar: FC = () => {
                 onClick={() => setIsCollapsed(!isCollapsed)}
                 className="inline-block"
               >
-                <ArrowBackIosIcon className="text-black" />
+                <ArrowBackIosIcon
+                  style={{ color: theme === "dark" ? "white" : "white" }}
+                />
               </IconButton>
             </Box>
           )}
@@ -146,7 +167,9 @@ const Sidebar: FC = () => {
             <Box textAlign="center">
               <Typography
                 variant="h4"
-                className="text-[20px] text-black dark:text-[#ffffffc1]"
+                className={`text-[20px] text-black dark:text-[#ffffffc1]  ${
+                  theme === "dark" ? "text-white" : "text-white"
+                }`}
                 sx={{ m: "10px 0 0 0" }}
               >
                 {user?.name}
@@ -154,7 +177,9 @@ const Sidebar: FC = () => {
               <Typography
                 variant="h6"
                 sx={{ m: "10px 0 0 0" }}
-                className="text-[20px] text-black dark:text-[#ffffffc1] capitalize"
+                className={`text-[20px] text-black dark:text-[#ffffffc1]  ${
+                  theme === "dark" ? "text-white" : "text-white"
+                }`}
               >
                 - {user?.role}
               </Typography>
@@ -162,89 +187,132 @@ const Sidebar: FC = () => {
           </Box>
         )}
         <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Link href={"/"}>
+            {" "}
+            <Item
+              title="Dashboard"
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"admin/users"}>
+            {" "}
+            <Item
+              title="Users"
+              icon={<GroupsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/invoices"}>
+            {" "}
+            <Item
+              title="Invoices"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/create-course"}>
+            {" "}
+            <Item
+              title="Create Course"
+              icon={<VideoCallIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/courses"}>
+            {" "}
+            <Item
+              title="Live Courses"
+              icon={<OndemandVideoIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/hero"}>
+            {" "}
+            <Item
+              title="Hero"
+              icon={<WebIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/faq"}>
+            {" "}
+            <Item
+              title="FAQ"
+              icon={<QuizIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/categories"}>
+            {" "}
+            <Item
+              title="Categories"
+              icon={<WysiwygIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/team"}>
+            {" "}
+            <Item
+              title="Manage Team"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/courses-analytics"}>
+            {" "}
+            <Item
+              title="Courses Analytics"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/orders-analytics"}>
+            {" "}
+            <Item
+              title="Orders Analytics"
+              icon={<MapOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
+          <Link href={"/admin/users-analytics"}>
+            {" "}
+            <Item
+              title="Users Analytics"
+              icon={<ManageHistoryIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+          </Link>
           <Item
-            title="Dashboard"
-            to="/admin"
-            icon={<HomeOutlinedIcon />}
+            title="Logout"
+            icon={<ExitToAppIcon />}
             selected={selected}
             setSelected={setSelected}
-          />
-          <Item
-            title="Users"
-            to="/admin/users"
-            icon={<GroupsIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Invoices"
-            to="/admin/invoices"
-            icon={<ReceiptOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Create Course"
-            to="/admin/create-course"
-            icon={<VideoCallIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Live Courses"
-            to="/admin/courses"
-            icon={<OndemandVideoIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Hero"
-            to="/admin/hero"
-            icon={<WebIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="FAQ"
-            to="/faq"
-            icon={<QuizIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Categories"
-            to="/admin/categories"
-            icon={<WysiwygIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Manage Team"
-            to="/admin/team"
-            icon={<PeopleOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Courses Analytics"
-            to="/admin/courses-analytics"
-            icon={<BarChartOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Orders Analytics"
-            to="/admin/orders-analytics"
-            icon={<MapOutlinedIcon />}
-            selected={selected}
-            setSelected={setSelected}
-          />
-          <Item
-            title="Users Analytics"
-            to="/admin/users-analytics"
-            icon={<ManageHistoryIcon />}
-            selected={selected}
-            setSelected={setSelected}
+            isCollapsed={isCollapsed}
           />
         </Box>
       </ProSidebar>

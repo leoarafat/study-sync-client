@@ -1,0 +1,9 @@
+/* CSS */
+.custom-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-content {
+  flex: 1;
+}
