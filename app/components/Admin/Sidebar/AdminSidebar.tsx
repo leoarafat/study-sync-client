@@ -153,7 +153,7 @@ const Sidebar: FC = () => {
           <Box mb="25px">
             <Box display="flex" justifyContent="center" alignItems="center">
               <img
-                src={user.avatar ? user.avatar.url : avatarDefault}
+                src={user?.avatar ? user.avatar.url : avatarDefault}
                 alt="profile-user"
                 width={100}
                 height={100}

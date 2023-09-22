@@ -16,24 +16,24 @@ const Profile = (props: Props) => {
   const [route, setRoute] = useState("Login");
   return (
     <div>
-      <Protected>
-        <Heading
-          title={`${user?.name} profile`}
-          description="StudySync is learning platform"
-          keywords="Programming, MERN, Redux"
-        />
-        <Header
-          open={open}
-          activeItem={activeItem}
-          setOpen={setOpen}
-          setRoute={setRoute}
-          route={route}
-        />
+      {/* <Protected> */}
+      <Heading
+        title={`${user?.name} profile`}
+        description="StudySync is learning platform"
+        keywords="Programming, MERN, Redux"
+      />
+      <Header
+        open={open}
+        activeItem={activeItem}
+        setOpen={setOpen}
+        setRoute={setRoute}
+        route={route}
+      />
 
-        <div className="dark:bg-slate-900 bg-opacity-90  bg-white">
-          <Profiles user={user} />
-        </div>
-      </Protected>
+      <div className="dark:bg-slate-900 bg-opacity-90  bg-white">
+        <Profiles user={user} />
+      </div>
+      {/* </Protected> */}
     </div>
   );
 };
