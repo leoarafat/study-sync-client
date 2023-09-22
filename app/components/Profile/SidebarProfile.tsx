@@ -31,7 +31,7 @@ const SidebarProfile: FC<Props> = ({
       >
         <Image
           src={
-            user.avatar || avatar ? user.avatar.url || avatar : avatarDefault
+            user?.avatar || avatar ? user.avatar.url || avatar : avatarDefault
           }
           alt=""
           width={20}

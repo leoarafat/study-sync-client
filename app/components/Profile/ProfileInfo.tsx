@@ -78,7 +78,7 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
               {" "}
               <Image
                 src={
-                  user.avatar || avatar
+                  user?.avatar || avatar
                     ? user.avatar?.url || avatar
                     : avatarIcon
                 }
