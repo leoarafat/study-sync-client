@@ -1,4 +1,4 @@
-import { styles } from "@/app/styles/style";
+import { styles } from "../../../styles/style";
 import React, { FC } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import toast from "react-hot-toast";

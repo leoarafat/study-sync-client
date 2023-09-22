@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { styles } from "@/app/styles/style";
+import { styles } from "../../../styles/style";
 import React, { useState, FC } from "react";
 
 type Props = {
