@@ -115,7 +115,7 @@ const CourseInformation: FC<Props> = ({
             </label>
             <input
               type="number"
-              name="estimatedPrice"
+              name=""
               value={CourseInfo.estimatedPrice}
               onChange={(e: any) =>
                 setCourseInfo({ ...CourseInfo, estimatedPrice: e.target.value })

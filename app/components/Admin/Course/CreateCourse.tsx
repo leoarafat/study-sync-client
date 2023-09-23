@@ -1,16 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CourseInformation from "./CourseInformation";
 import CourseOptions from "./CourseOptions";
 import CourseData from "./CourseData";
 import CourseContent from "./CourseContent";
 import CoursePreview from "./CoursePreview";
+import { useCreateCourseMutation } from "@/redux/features/courses/coursesApi";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 type Props = {};
 
 const CreateCourse = (props: Props) => {
   const [active, setActive] = useState(0);
-
+  const [createCourse, { isLoading, isError, isSuccess, error }] =
+    useCreateCourseMutation();
   const [courseInfo, setCourseInfo] = useState({
     name: "",
     description: "",
@@ -40,6 +44,21 @@ const CreateCourse = (props: Props) => {
       suggestion: "",
     },
   ]);
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Course created successfully");
+      redirect("/admin/all-courses");
+    }
+    if (error) {
+      if ("data" in error) {
+        const errorMessage = error as any;
+        toast.error(errorMessage.data.message);
+      } else {
+        toast.error("An error occurred while creating the course.");
+      }
+    }
+  }, [isLoading, isSuccess, error]);
+
   const handleSubmit = async () => {
     // Format benefits array
     const formattedBenefits = benefits.map((benefit) => ({
@@ -85,7 +104,11 @@ const CreateCourse = (props: Props) => {
   };
   const handleCourseCreate = async (e: any) => {
     const data = courseData;
+    if (!isLoading) {
+      await createCourse(data);
+    }
   };
+
   return (
     <div className="w-full flex min-h-screen">
       <div className="w-[80%]">
@@ -122,6 +145,7 @@ const CreateCourse = (props: Props) => {
             setActive={setActive}
             handleCourseCreate={handleCourseCreate}
             courseData={courseData}
+            isLoading={isLoading}
           />
         )}
       </div>
