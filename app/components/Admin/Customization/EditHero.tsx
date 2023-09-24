@@ -35,7 +35,7 @@ const EditHero: FC<Props> = (props: Props) => {
         toast.error(errorMsg?.data?.message);
       }
     }
-  }, [data, error, isSuccess]);
+  }, [data, error, isSuccess, refetch]);
 
   const handleUpdate = (e: any) => {
     const file = e.target.files?.[0];

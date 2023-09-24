@@ -9,7 +9,7 @@ type Props = {
   courseData: any;
   handleCourseCreate: any;
   isLoading: any;
-  isEdit: boolean;
+  isEdit?: boolean;
 };
 
 const CoursePreview: FC<Props> = ({

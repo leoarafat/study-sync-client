@@ -19,6 +19,7 @@ const CreateCourse = (props: Props) => {
   const [courseInfo, setCourseInfo] = useState({
     name: "",
     description: "",
+    categories: "",
     price: "",
     estimatedPrice: "",
     tags: "",
@@ -36,6 +37,7 @@ const CreateCourse = (props: Props) => {
       title: "",
       description: "",
       videoSection: "Untitled Section",
+      videoLength: "",
       links: [
         {
           title: "",
@@ -75,6 +77,7 @@ const CreateCourse = (props: Props) => {
     const formattedCourseContentData = courseContentData.map(
       (courseContent) => ({
         videoUrl: courseContent.videoUrl,
+        videoLength: courseContent.videoLength,
         title: courseContent.title,
         description: courseContent.description,
         videoSection: courseContent.videoSection,
