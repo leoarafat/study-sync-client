@@ -9,6 +9,7 @@ type Props = {
   courseData: any;
   handleCourseCreate: any;
   isLoading: any;
+  isEdit: boolean;
 };
 
 const CoursePreview: FC<Props> = ({
@@ -17,6 +18,7 @@ const CoursePreview: FC<Props> = ({
   courseData,
   handleCourseCreate,
   isLoading,
+  isEdit,
 }) => {
   const discountPercentage =
     ((courseData?.estimatedPrice - courseData?.price) /
@@ -142,7 +144,7 @@ const CoursePreview: FC<Props> = ({
           className="w-full xl:w-[188px] flex items-center justify-center h-[40px] bg-[#37a39a] text-center text-[#fff] rounded mt-8 cursor-pointer"
           onClick={() => createCourse()}
         >
-          {isLoading ? "Creating.." : "Create"}
+          {isEdit ? "Update" : "Create"}
         </div>
       </div>
     </div>

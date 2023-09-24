@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../components/Loader/Loader";
 
 type Props = {
   videoUrl: string;
@@ -33,7 +34,7 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
   return (
     <div style={{ paddingTop: "41%", position: "relative" }}>
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : error ? (
         <p>{error}</p>
       ) : videoData && videoData.otp && videoData.playbackInfo ? (

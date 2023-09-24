@@ -28,6 +28,13 @@ export const userApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["updatePassword"],
     }),
+    getAllUsers: builder.query({
+      query: () => ({
+        url: "/user/get-users",
+        method: "GET",
+        credentials: "include" as const,
+      }),
+    }),
   }),
 });
 
@@ -35,4 +42,5 @@ export const {
   useUpdateAvatarMutation,
   useUpdateProfileMutation,
   useUpdatePasswordMutation,
+  useGetAllUsersQuery,
 } = userApi;

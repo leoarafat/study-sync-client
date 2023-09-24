@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
-import Heading from "../../../app/utils/Heading";
-import CreateCourse from "../../components/Admin/Course/CreateCourse";
 import DashboardHeader from "@/app/components/Admin/Sidebar/DashboardHeader";
 import Sidebar from "@/app/components/Admin/Sidebar/AdminSidebar";
-// dark:bg-slate-900 bg-opacity-90  bg-white
+import EditCOurse from "@/app/components/Admin/Course/EditCOurse";
+import Heading from "@/app/utils/Heading";
+import EditHero from "@/app/components/Admin/Customization/EditHero";
+
 type Props = {};
 
-const Course = (props: Props) => {
+const Hero = ({ params }: any) => {
+  const id = params?.id;
   return (
-    <div className="">
+    <div className="dark:bg-slate-900 bg-opacity-90  bg-white">
       <Heading
         title="StudySync - Admin"
         description="StudySync is a platform for students to learn and get help from teachers"
@@ -21,11 +23,11 @@ const Course = (props: Props) => {
         </div>
         <div className="w-[85%]  ">
           <DashboardHeader />
-          <CreateCourse />
+          <EditHero />
         </div>
       </div>
     </div>
   );
 };
 
-export default Course;
+export default Hero;

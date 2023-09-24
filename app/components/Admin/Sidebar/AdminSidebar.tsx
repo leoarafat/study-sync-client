@@ -60,7 +60,7 @@ const Item: FC<ItemProps> = ({
   );
 };
 
-const Sidebar: FC = () => {
+const AdminSidebar: FC = () => {
   const { user } = useSelector((state: any) => state.auth);
   const [logout, setLogout] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -197,7 +197,7 @@ const Sidebar: FC = () => {
               isCollapsed={isCollapsed}
             />
           </Link>
-          <Link href={"admin/users"}>
+          <Link href={"/admin/users"}>
             {" "}
             <Item
               title="Users"
@@ -247,7 +247,7 @@ const Sidebar: FC = () => {
               isCollapsed={isCollapsed}
             />
           </Link>
-          <Link href={"/faq"}>
+          <Link href={"/admin/faq"}>
             {" "}
             <Item
               title="FAQ"
@@ -320,4 +320,4 @@ const Sidebar: FC = () => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;
