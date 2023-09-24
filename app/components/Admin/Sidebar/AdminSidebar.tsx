@@ -187,7 +187,7 @@ const AdminSidebar: FC = () => {
           </Box>
         )}
         <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-          <Link href={"/"}>
+          <Link href={"/admin"}>
             {" "}
             <Item
               title="Dashboard"
