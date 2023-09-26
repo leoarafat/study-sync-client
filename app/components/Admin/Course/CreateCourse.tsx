@@ -95,6 +95,7 @@ const CreateCourse = (props: Props) => {
       price: courseInfo.price,
       estimatedPrice: courseInfo.estimatedPrice,
       tags: courseInfo.tags,
+      categories: courseInfo.categories,
       level: courseInfo.level,
       demoUrl: courseInfo.demoUrl,
       thumbnail: courseInfo.thumbnail,
@@ -112,7 +113,7 @@ const CreateCourse = (props: Props) => {
       await createCourse(data);
     }
   };
-
+  console.log(courseData);
   return (
     <div className="w-full flex min-h-screen">
       <div className="w-[80%]">

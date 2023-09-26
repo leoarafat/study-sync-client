@@ -9,7 +9,7 @@ const nextConfig = {
     SECRET: process.env.SECRET,
   },
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "randomuser.me"],
   },
 };
 

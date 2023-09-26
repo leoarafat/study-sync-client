@@ -21,7 +21,7 @@ const CourseInformation: FC<Props> = ({
   const [categories, setCategories] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
-      setCategories(data.data.categories);
+      setCategories(data?.data?.categories);
     }
   }, [data]);
 
@@ -64,6 +64,7 @@ const CourseInformation: FC<Props> = ({
       reader.readAsDataURL(file);
     }
   };
+  console.log(CourseInfo);
   return (
     <div className="w-[80%] m-auto mt-24">
       <form onSubmit={handleSubmit} className={styles.label}>
@@ -162,15 +163,14 @@ const CourseInformation: FC<Props> = ({
               className={`${styles.input}`}
               name=""
               id=""
-              value={CourseInfo.category} // Change "categories" to "category"
-              onChange={
-                (e: any) =>
-                  setCourseInfo({ ...CourseInfo, category: e.target.value }) // Use e.target.value to set the selected category
+              value={CourseInfo.categories}
+              onChange={(e: any) =>
+                setCourseInfo({ ...CourseInfo, categories: e.target.value })
               }
             >
               <option value="">Select Category</option>
               {categories?.map((item: any) => (
-                <option value={item._id} key={item._id}>
+                <option value={item.title} key={item._id}>
                   {item.title}
                 </option>
               ))}
