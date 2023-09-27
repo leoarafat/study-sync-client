@@ -10,6 +10,7 @@
         "select-name": "off"
       }
     ],
-    "axe/aria": "off"
+    "axe/aria": "off",
+    "typescript-config/is-valid": "off"
   }
 }

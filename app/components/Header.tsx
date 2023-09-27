@@ -87,7 +87,7 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
           active
             ? " dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black"
             : "dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black"
-        } fixed top-0 left-0 w-full z-80 border-b shadow-xl transition duration-500`}
+        } fixed top-0 left-0 w-full z-80 border-b bg-base-50 shadow-xl transition duration-500`}
       >
         <div className="w-[95%] 800px:w-[92%] m-auto py-2 h-full">
           <div className="w-full h-[80px] flex items-center justify-between p-3">

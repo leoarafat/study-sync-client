@@ -12,7 +12,7 @@ const Courses = (props: Props) => {
   useEffect(() => {
     setCourses(data?.data);
   }, [data?.data]);
-  console.log(courses);
+
   return (
     <div className="dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-black dark:to-gray-900">
       <div className="w-[90%] 800px:w-[80%] m-auto">

@@ -9,7 +9,7 @@ type Props = {
 };
 
 const CourseCard: FC<Props> = ({ item, isProfile }) => {
-  const courseLink = isProfile
+  const courseLink = !isProfile
     ? `/course/${item._id}`
     : `/course-access/${item._id}`;
 
