@@ -5,7 +5,7 @@ import { MdOutlineOndemandVideo } from "react-icons/md";
 type Props = {
   data: any;
   activeVideo?: number;
-  setActiveVideo?: boolean;
+  setActiveVideo?: any;
   isDemo?: boolean;
 };
 

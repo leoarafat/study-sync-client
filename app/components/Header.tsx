@@ -81,7 +81,7 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, setRoute, open }) => {
   };
 
   return (
-    <div className="w-full relative mb-[95px]">
+    <div className="w-full relative mb-[95px] z-50">
       <div
         className={`${
           active

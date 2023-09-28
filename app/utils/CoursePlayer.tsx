@@ -32,7 +32,9 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
   }, [videoUrl]);
   console.log(videoData);
   return (
-    <div style={{ paddingTop: "41%", position: "relative" }}>
+    <div
+      style={{ paddingTop: "56.25%", position: "relative", overflow: "hidden" }}
+    >
       {loading ? (
         <Loader />
       ) : error ? (
@@ -42,7 +44,7 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
           src={`https://player.vdocipher.com/v2/?otp=${videoData.otp}&playbackInfo=${videoData.playbackInfo}&player=i1a4J9832sQFnqV9`}
           style={{
             border: 0,
-            width: "90%",
+            width: "100%",
             height: "100%",
             position: "absolute",
             top: 0,

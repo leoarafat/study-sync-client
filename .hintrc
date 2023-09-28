@@ -11,6 +11,7 @@
       }
     ],
     "axe/aria": "off",
-    "typescript-config/is-valid": "off"
+    "typescript-config/is-valid": "off",
+    "compat-api/html": "off"
   }
 }

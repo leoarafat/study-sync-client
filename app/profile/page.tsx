@@ -13,6 +13,7 @@ const Profile = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(5);
   const { user } = useSelector((state: any) => state.auth);
+  console.log(user);
   const [route, setRoute] = useState("Login");
   return (
     <div>
