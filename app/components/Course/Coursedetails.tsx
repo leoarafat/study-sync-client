@@ -1,28 +1,41 @@
+/* eslint-disable react/jsx-no-undef */
 import { styles } from "@/app/styles/style";
 import CoursePlayer from "@/app/utils/CoursePlayer";
 import Ratings from "@/app/utils/Ratings";
 import Link from "next/link";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { IoCheckmarkDoneOutline, IoCloseOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { format } from "timeago.js";
 import CourseContentList from "./CourseContentList";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../Payment/CheckoutForm";
+import defaultUser from "../../../public/assests/user2.png";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
+import Image from "next/image";
+import toast from "react-hot-toast";
 type Props = {
   data: any;
   stripePromise: any;
   clientSecret: string;
+  setRoute: any;
+  setOpen: any;
 };
 
-const CourseDetails: FC<Props> = ({ data, stripePromise, clientSecret }) => {
-  console.log(data._id);
+const CourseDetails: FC<Props> = ({
+  data,
+  stripePromise,
+  clientSecret,
+  setOpen: openAuthModal,
+  setRoute,
+}) => {
   const [open, setOpen] = useState(false);
-  // const { user } = useSelector((state: any) => state.auth);
-  // console.log(user, "User data");
+  const [user, setUser] = useState<any>();
+
   const { data: userData } = useLoadUserQuery(undefined, {});
-  const user = userData?.data;
+  useEffect(() => {
+    setUser(userData?.data);
+  }, [userData]);
 
   const discountPercentage =
     ((data?.estimatedPrice - data.price) / data?.estimatedPrice) * 100;
@@ -31,7 +44,13 @@ const CourseDetails: FC<Props> = ({ data, stripePromise, clientSecret }) => {
     user?.courses && user?.courses?.find((item: any) => item._id === data._id);
 
   const handleOrder = (e: any) => {
-    setOpen(true);
+    if (user) {
+      setOpen(true);
+    } else {
+      toast.error("Please login to access this resource");
+      setRoute("Login");
+      openAuthModal(true);
+    }
   };
 
   return (
@@ -125,14 +144,22 @@ const CourseDetails: FC<Props> = ({ data, stripePromise, clientSecret }) => {
                 </h5>
               </div>
               {data?.reviews &&
-                data.reviews.reverse().map((item: any, index: number) => (
+                data?.reviews.map((item: any, index: number) => (
                   <div className="w-full pb-4" key={index}>
                     <div className="flex">
                       <div className="w-[50px] h-[50px]">
-                        <div className="w-[50px] h-[50px] bg-slate-600 rounded-[50px] flex items-center justify-center cursor-pointer">
-                          <h1 className="uppercase text-[18px] text-black dark:text-white">
-                            {item.user.name.slice(0, 2)}
-                          </h1>
+                        <div className="w-[50px] h-[50px] ">
+                          <Image
+                            src={
+                              item.user.avatar
+                                ? item.user.avatar.url
+                                : defaultUser
+                            }
+                            width={50}
+                            height={50}
+                            alt=""
+                            className="w-[50px] h-[50px] rounded-full object-cover"
+                          />
                         </div>
                       </div>
                       <div className="hidden 800px:block pl-2">

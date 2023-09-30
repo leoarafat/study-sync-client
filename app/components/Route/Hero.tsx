@@ -1,8 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const HeroSection = () => {
+  const [search, setSearch] = useState("");
+  const router = useRouter();
+  const handleSearch = () => {
+    if (search === "") {
+      return;
+    } else {
+      router.push(`/courses?title=${search}`);
+    }
+  };
+
   return (
     <div className="dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black py-12 px-4 1000px:flex flex-col md:flex-row items-center">
       {/* Left Side (Image) */}
@@ -24,11 +35,17 @@ const HeroSection = () => {
         </p>
         <div className="flex flex-col md:flex-row items-center md:space-x-4 animate__animated animate__fadeIn animate__delay-3s">
           <input
-            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            type="search"
             placeholder="Search..."
             className="px-4 py-2 rounded-lg w-full md:w-2/3 bg-gray-700 dark:bg-white text-white dark:text-gray-800 focus:outline-none mb-2 md:mb-0"
           />
-          <button className="px-4 py-2 rounded-lg bg-green-500 text-black dark:text-white hover:bg-green-600 transition duration-300 w-full md:w-1/3 lg:w-1/4">
+          <button
+            onClick={handleSearch}
+            type="submit"
+            className="px-4 py-2 rounded-lg bg-green-500 text-black dark:text-white hover:bg-green-600 transition duration-300 w-full md:w-1/3 lg:w-1/4"
+          >
             Search
           </button>
         </div>
