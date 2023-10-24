@@ -126,7 +126,7 @@ const CourseContentMedia: FC<Props> = ({
   if (!data || !data[activeVideo]?.videoUrl || !data[activeVideo]?.title) {
     return <Loader />;
   }
-  console.log(course?.data?.reviews);
+
   // console.log(data[0]._id);
   const isReviewExists = course?.data?.reviews?.find(
     (item: any) => item._id === user?._id
@@ -206,7 +206,7 @@ const CourseContentMedia: FC<Props> = ({
           <AiOutlineArrowRight className="ml-2" />
         </div>
       </div>
-      <h1 className="dark:text-white text-black pt-2 text-[25px] font-[600]">
+      <h1 className="text-white  pt-2 text-[25px] font-[600]">
         {data[activeVideo]?.title}
       </h1>
       <br />
@@ -227,7 +227,7 @@ const CourseContentMedia: FC<Props> = ({
       </div>
       <br />
       {activeBar === 0 && (
-        <p className="dark:text-white text-black text-[18px] whitespace-pre-line mb-3">
+        <p className="text-white  text-[18px] whitespace-pre-line mb-3">
           {data[activeVideo]?.description}
         </p>
       )}
@@ -235,7 +235,7 @@ const CourseContentMedia: FC<Props> = ({
         <div>
           {data[activeVideo]?.links.map((item: any, index: number) => (
             <div className="mb-5" key={index}>
-              <h2 className="800px:text-[20px] 800px:inline-block text-black dark:text-white">
+              <h2 className="800px:text-[20px] 800px:inline-block text-white">
                 {item.title && item.title}
               </h2>
               <a
@@ -312,7 +312,7 @@ const CourseContentMedia: FC<Props> = ({
                   className="w-[50px] h-[50px] rounded-full object-cover"
                 />
                 <div className="w-full">
-                  <h5 className="pl-3 text-[20px] font-[500] dark:text-white text-black">
+                  <h5 className="pl-3 text-[20px] font-[500] text-white ">
                     Give a Rating <span className="text-red-500">*</span>
                   </h5>
                   <div className="flex w-full ml-2 pb-3">
@@ -467,7 +467,7 @@ const CommentItem = ({
         </div>
         <div className="w-full flex ">
           <span
-            className="800px:pl-16 text-black dark:text-[#ffffff83] cursor-pointer mr-2 "
+            className="800px:pl-16 text-[#ffffff83] cursor-pointer mr-2 "
             onClick={() => {
               setReplyActive(!replyActive), setQuestionId(item?._id);
             }}
@@ -488,7 +488,7 @@ const CommentItem = ({
             <>
               {item?.questionReplies.map((item: any) => (
                 <div
-                  className="w-full flex 800px:ml-16 my-5 text-black dark:text-white"
+                  className="w-full flex 800px:ml-16 my-5 text-white"
                   key={item._id}
                 >
                   <div>
@@ -520,13 +520,13 @@ const CommentItem = ({
                 </div>
               ))}
               {/* Reply Input */}
-              <div className="w-full flex relative dark:text-white text-black">
+              <div className="w-full flex relative text-white ">
                 <input
                   type="text"
                   placeholder="Enter your reply..."
                   value={answer}
                   onChange={(e: any) => setAnswer(e.target.value)}
-                  className={`block 800px:ml-12 mt-2 outline-none bg-transparent border-b border-[#00000027] dark:text-white text-black dark:border-[#fff] p-[5px] w-[95%] ${
+                  className={`block 800px:ml-12 mt-2 outline-none bg-transparent border-b border-[#00000027] text-white border-[#fff] p-[5px] w-[95%] ${
                     answer === "" ||
                     (answerCreationLoading && "cursor-not-allowed")
                   } `}

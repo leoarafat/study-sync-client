@@ -33,7 +33,7 @@ const Pages = ({ params }: Props) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="dark:bg-slate-900 bg-opacity-90  bg-white">
+        <div className="bg-slate-900 bg-opacity-90">
           <CourseContent id={id} user={data?.data} />
         </div>
       )}

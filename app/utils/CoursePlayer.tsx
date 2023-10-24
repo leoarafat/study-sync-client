@@ -17,9 +17,12 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
 
   useEffect(() => {
     axios
-      .post(`http://localhost:5000/api/v1/course/getVdoCipherOTP`, {
-        videoId: videoUrl,
-      })
+      .post(
+        `https://study-sync-server.vercel.app/api/v1/course/getVdoCipherOTP`,
+        {
+          videoId: videoUrl,
+        }
+      )
       .then((res) => {
         setVideoData(res.data.data);
         setLoading(false);
@@ -30,7 +33,6 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
         setLoading(false);
       });
   }, [videoUrl]);
-  console.log(videoData);
   return (
     <div
       style={{ paddingTop: "56.25%", position: "relative", overflow: "hidden" }}
@@ -41,7 +43,7 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
         <p>{error}</p>
       ) : videoData && videoData.otp && videoData.playbackInfo ? (
         <iframe
-          src={`https://player.vdocipher.com/v2/?otp=${videoData.otp}&playbackInfo=${videoData.playbackInfo}&player=i1a4J9832sQFnqV9`}
+          src={`https://player.vdocipher.com/v2/?otp=${videoData.otp}&playbackInfo=${videoData.playbackInfo}&player=CxyucGm71WyTpmuY`}
           style={{
             border: 0,
             width: "100%",

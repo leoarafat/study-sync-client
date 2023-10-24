@@ -58,7 +58,7 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
     <div className="w-full">
       <h1 className={`${styles.title}`}>Login with StudySync</h1>
       <form onSubmit={handleSubmit}>
-        <label className={`${styles.label}`} htmlFor="email">
+        {/* <label className={`${styles.label}`} htmlFor="email">
           Enter your Email
         </label>
         <input
@@ -115,9 +115,9 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
             className={`${styles.button}`}
           />
         </div>
-        <br />
-        <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Or join with
+        <br /> */}
+        <h5 className="text-center pt-4 font-Poppins text-[20px]text-white">
+          Join with
         </h5>
         <div className="flex items-center justify-center my-3">
           <FcGoogle

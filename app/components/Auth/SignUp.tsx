@@ -60,7 +60,7 @@ const SignUp: FC<Props> = ({ setRoute }) => {
     <div className="w-full">
       <h1 className={`${styles.title}`}>Connect with StudySync</h1>
       <form onSubmit={handleSubmit}>
-        <div className="w-full  relative mb-1">
+        {/* <div className="w-full  relative mb-1">
           <label className={`${styles.label}`} htmlFor="name">
             Enter your name
           </label>
@@ -137,10 +137,10 @@ const SignUp: FC<Props> = ({ setRoute }) => {
             value={isLoading ? "Loading..." : "Sign Up"}
             className={`${styles.button}`}
           />
-        </div>
+        </div> */}
 
-        <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Or join with
+        <h5 className="text-center pt-4 font-Poppins text-[20px] text-white">
+          Join with
         </h5>
         <div className="flex items-center justify-center my-3">
           <FcGoogle size={30} className="cursor-pointer mr-2" />

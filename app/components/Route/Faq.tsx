@@ -3,9 +3,7 @@ import { useGetHeroDataQuery } from "@/redux/features/layouts/layoutsApi";
 import React, { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi";
 
-type Props = {};
-
-const Faq = (props: Props) => {
+const Faq = () => {
   const { data, isLoading } = useGetHeroDataQuery("FAQ", {});
   const [activeQuestion, setActiveQuestion] = useState(null);
   const [questions, setQuestions] = useState<any[]>([]);
@@ -21,7 +19,7 @@ const Faq = (props: Props) => {
   };
 
   return (
-    <div className="dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-black dark:to-gray-900">
+    <div className="bg-opacity-50 bg-gradient-to-b from-black to-gray-900">
       <div className="w-[90%] 800px:w-[80]% m-auto ">
         <h1 className={`${styles.title} text-5xl 800px:text-[40px]`}>
           Frequently Asked Questions
@@ -40,21 +38,19 @@ const Faq = (props: Props) => {
                     className="flex items-start justify-between w-full text-left focus:outline-none"
                     onClick={() => toggleQuestion(q.id)}
                   >
-                    <span className="font-medium text-black dark:text-white">
-                      {q.question}
-                    </span>
+                    <span className="font-medium text-white">{q.question}</span>
                     <span className="ml-6 flex-shrink-0">
                       {activeQuestion === q._id ? (
-                        <HiMinus className="h-6 w-6 text-black dark:text-white" />
+                        <HiMinus className="h-6 w-6 text-white" />
                       ) : (
-                        <HiPlus className="h-6 w-6 text-black dark:text-white" />
+                        <HiPlus className="h-6 w-6 text-white" />
                       )}
                     </span>
                   </button>
                 </dt>
                 {activeQuestion === q.id && (
                   <dd className="mt-2 pr-12">
-                    <p className="text-base font-Poppins text-black dark:text-white">
+                    <p className="text-base font-Poppins text-white">
                       {q.answer}
                     </p>
                   </dd>

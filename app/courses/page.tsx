@@ -19,7 +19,7 @@ const Courses = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [courses, setCourses] = useState([]);
   const [category, setCategory] = useState("All");
-  console.log(data?.data);
+
   useEffect(() => {
     if (category === "All") {
       setCourses(data?.data);
@@ -41,7 +41,7 @@ const Courses = (props: Props) => {
   const categories = categoriesData?.data?.categories;
 
   return (
-    <div className="dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black h-[100vh]">
+    <div className="bg-opacity-50 bg-gradient-to-b from-gray-900 to-black h-[100vh]">
       {isLoading ? (
         <Loader />
       ) : (

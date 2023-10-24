@@ -4,7 +4,7 @@ import React from "react";
 
 const Page = ({ params }: any) => {
   return (
-    <div className="dark:bg-slate-900 bg-opacity-90  bg-white">
+    <div className="bg-slate-900 bg-opacity-90">
       <CourseDetailsPage id={params.id} />
     </div>
   );

@@ -5,21 +5,19 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-black dark:to-gray-900">
+    <div className="bg-opacity-50 bg-gradient-to-b from-black to-gray-900">
       <footer>
-        <div className="border border-[#0000000e] dark:border-[#ffffff1e]"></div>
+        <div className="border border-[#ffffff1e]"></div>
         <br />
         <div className="w-[95%] 800px:w-full 800px:max-w-[85%] mx-auto px-2 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-3">
-              <h3 className="text-20px font-[600] text-black dark:text-white">
-                About
-              </h3>
+              <h3 className="text-20px font-[600] text-white">About</h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     href="/about"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Our Story
                   </Link>
@@ -27,7 +25,7 @@ const Footer = (props: Props) => {
                 <li>
                   <Link
                     href="/privacy-policy"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Privacy Policy
                   </Link>
@@ -35,7 +33,7 @@ const Footer = (props: Props) => {
                 <li>
                   <Link
                     href="/faq"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white font-[600]"
+                    className="text-base text-gray-300 hover:text-white font-[600]"
                   >
                     FAQ
                   </Link>
@@ -43,14 +41,12 @@ const Footer = (props: Props) => {
               </ul>
             </div>
             <div className="space-y-3">
-              <h3 className="text-[20px] text-black dark:text-white">
-                Quick Links
-              </h3>
+              <h3 className="text-[20px] text-white">Quick Links</h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     href="/courses"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Courses
                   </Link>
@@ -58,7 +54,7 @@ const Footer = (props: Props) => {
                 <li>
                   <Link
                     href="/profile"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     My Account
                   </Link>
@@ -66,7 +62,7 @@ const Footer = (props: Props) => {
                 <li>
                   <Link
                     href="/course-dashboard"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Course Dashboard
                   </Link>
@@ -74,14 +70,14 @@ const Footer = (props: Props) => {
               </ul>
             </div>
             <div className="space-y-3">
-              <h3 className="text-[20px] font-[600] text-black dark:text-white">
+              <h3 className="text-[20px] font-[600] text-white">
                 Social Links
               </h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     href="https://www.youtube.com/channel/UCHz6Sne9splmvm-q2w1_HWQ"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Youtube
                   </Link>
@@ -89,7 +85,7 @@ const Footer = (props: Props) => {
                 <li>
                   <Link
                     href="https://www.instagram.com/shahriar_sajeeb_/"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Instagram
                   </Link>
@@ -97,7 +93,7 @@ const Footer = (props: Props) => {
                 <li>
                   <Link
                     href="https://www.github.com/shahriarsajeeb"
-                    className="text-base text-black dark:text-gray-300 dark:hover:text-white"
+                    className="text-base text-gray-300 hover:text-white"
                   >
                     Github
                   </Link>
@@ -105,10 +101,10 @@ const Footer = (props: Props) => {
               </ul>
             </div>
             <div>
-              <h3 className="text-[20px] font-[600] text-black dark:text-white pb-3">
+              <h3 className="text-[20px] font-[600] text-white pb-3">
                 Contact Info
               </h3>
-              <p className="text-base text-black dark:text-gray-300 dark:hover:text-white pb-2">
+              <p className="text-base text-gray-300 hover:text-white pb-2">
                 Call Us: 1-885-665-2022
               </p>
               {/* Add more contact info here if needed */}

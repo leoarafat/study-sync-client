@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import React, { useEffect } from "react";
+import React from "react";
 import userAuth from "./useAuth";
 
 interface ProtectedProps {

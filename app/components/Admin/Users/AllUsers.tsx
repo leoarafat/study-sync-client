@@ -9,7 +9,7 @@ import { format } from "timeago.js";
 import { useGetAllUsersQuery } from "@/redux/features/user/userApi";
 import { styles } from "@/app/styles/style";
 type Props = {
-  isTeam: boolean;
+  isTeam?: boolean;
 };
 
 const AllUsers: FC<Props> = ({ isTeam }) => {

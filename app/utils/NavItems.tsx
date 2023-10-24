@@ -3,10 +3,12 @@ import React, { FC } from "react";
 
 export const navItemsData = [
   { name: "Home", url: "/" },
+  // { name: "Profile", url: "/profile" },
   { name: "Courses", url: "/courses" },
-  { name: "About", url: "/about" },
-  { name: "Policy", url: "/policy" },
+  // { name: "About", url: "/about" },
+  // { name: "Policy", url: "/policy" },
   { name: "FAQ", url: "/faq" },
+  // { name: "Login", url: "/login" },
 ];
 
 type Props = {
@@ -23,9 +25,7 @@ const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
             <Link href={item.url} key={index} passHref>
               <span
                 className={`${
-                  activeItem === index
-                    ? "dark:text-[#37839a] text-[crimson]"
-                    : "dark:text-white text-black"
+                  activeItem === index ? "text-[#37839a]" : "text-white "
                 } text-[18px] px-6 font-Poppins font-[400]`}
               >
                 {item.name}
@@ -41,9 +41,7 @@ const NavItems: FC<Props> = ({ activeItem, isMobile }) => {
               <Link className="py-2" key={index} href="/" passHref>
                 <span
                   className={`${
-                    activeItem === index
-                      ? "dark:text-[#37839a] text-[crimson]"
-                      : "dark:text-white text-black"
+                    activeItem === index ? "text-[#37839a] " : "text-white "
                   } text-[18px] px-6 font-Poppins font-[400]`}
                 >
                   {i.name}

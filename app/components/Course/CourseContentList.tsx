@@ -54,11 +54,9 @@ const CourseContentList: FC<Props> = (props) => {
             <div className="w-full flex">
               {/* Render video section */}
               <div className="w-full flex justify-between items-center">
-                <h2 className="text-[22px] text-black dark:text-white">
-                  {section}
-                </h2>
+                <h2 className="text-[22px] text-white">{section}</h2>
                 <button
-                  className="mr-4 cursor-pointer text-black dark:text-white"
+                  className="mr-4 cursor-pointer text-white"
                   onClick={() => toggleSection(section)}
                 >
                   {isSectionVisible ? (
@@ -69,7 +67,7 @@ const CourseContentList: FC<Props> = (props) => {
                 </button>
               </div>
             </div>
-            <h5 className="text-black dark:text-white">
+            <h5 className="text-white">
               {sectionVideoCount} Lessons{" "}
               {sectionVideoLength < 60
                 ? sectionVideoLength
@@ -100,11 +98,11 @@ const CourseContentList: FC<Props> = (props) => {
                             color="#1cdada"
                           />
                         </div>
-                        <h1 className="text-[18px] inline-block break-words text-black dark:text-white">
+                        <h1 className="text-[18px] inline-block break-words text-white">
                           {item.title}
                         </h1>
                       </div>
-                      <h5 className="pl-8 text-black dark:text-white">
+                      <h5 className="pl-8 text-white">
                         {item.videoLength < 60
                           ? contentLength.toFixed(2)
                           : item.videoLength}{" "}

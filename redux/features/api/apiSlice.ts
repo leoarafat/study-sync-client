@@ -4,7 +4,7 @@ import { userLoggedIn } from "../auth/authSlice";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.SERVER_URL,
+    baseUrl: process.env.SERVER_URL || "http://localhost:5000",
   }),
   tagTypes: ["updateProfile", "updatePassword"],
   endpoints: (builder) => ({

@@ -115,7 +115,7 @@ const EditFaq = (props: Props) => {
                 >
                   <dt className="text-lg">
                     <button
-                      className="flex items-start dark:text-white text-black justify-between w-full text-left focus:outline-none"
+                      className="flex items-start text-white  justify-between w-full text-left focus:outline-none"
                       onClick={() => toggleQuestion(q._id)}
                     >
                       <input
@@ -147,7 +147,7 @@ const EditFaq = (props: Props) => {
                       />
                       <span className="ml-6 flex-shrink-0">
                         <AiOutlineDelete
-                          className="dark:text-white text-black text-18 cursor-pointer"
+                          className="text-white  text-18 cursor-pointer"
                           onClick={() => handleDelete(q._id)}
                         />
                       </span>

@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import { useSelector } from "react-redux";
 
 export default function userAuth() {
