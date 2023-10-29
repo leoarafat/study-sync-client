@@ -193,7 +193,7 @@ const CourseDetails: FC<Props> = ({
                 {isPurchased ? (
                   <Link
                     className={`${styles.button} !w-[180px] my-3 font-Poppins cursor-pointer !bg-[crimson]`}
-                    href={`/course-access/${data._id}`}
+                    href={`/course-access/${data?._id}`}
                   >
                     Enter to Course
                   </Link>

@@ -13,7 +13,7 @@ const FaqPages = () => {
         setRoute={setRoute}
         open={open}
         setOpen={setOpen}
-        activeItem={1}
+        activeItem={2}
       />
       <div className="bg-opacity-50 bg-gradient-to-b from-gray-900 to-black h-[100vh]">
         <Faq />

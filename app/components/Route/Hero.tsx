@@ -31,7 +31,7 @@ const HeroSection = () => {
           Unlock Your Learning Potential with StudySync
         </h1>
         <p className="text-white text-base md:text-lg mb-6 animate__animated animate__fadeIn animate__delay-2s">
-          ive into a world of endless educational possibilities with StudySync!
+          Dive into a world of endless educational possibilities with StudySync!
           Our innovative e-learning platform is designed to empower students and
           educators alike. Whether you're a student striving for academic
           excellence or an educator dedicated to fostering a love for learning,

@@ -58,7 +58,7 @@ const Courses = (props: Props) => {
               title={"All courses - StudySync"}
               description={"StudySync is a programming community."}
               keywords={
-                "programming community, coding skills, expert insights, collaboration, growth"
+                "Programming community, coding skills, expert insights, collaboration, growth"
               }
             />
             <br />
@@ -76,7 +76,7 @@ const Courses = (props: Props) => {
                   <div key={index}>
                     <div
                       className={`h-[35px] ${
-                        category === item.title
+                        category === item?.title
                           ? "bg-[crimson]"
                           : "bg-[#5050cb]"
                       } m-3 px-3 rounded-[30px] flex items-center justify-center font-Poppins cursor-pointer`}
