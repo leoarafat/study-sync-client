@@ -4,7 +4,8 @@ import { userLoggedIn } from "../auth/authSlice";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.SERVER_URL || "http://localhost:5000",
+    baseUrl:
+      process.env.SERVER_URL || "https://study-sync-server.vercel.app/api/v1/",
   }),
   tagTypes: ["updateProfile", "updatePassword"],
   endpoints: (builder) => ({
