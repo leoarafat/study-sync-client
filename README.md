@@ -16,7 +16,7 @@ Analytics Dashboard: Gain insights into user registration, course creation, and 
 
 ## Technology Stack
 
-# Frontend
+### Frontend
 
 Next.js: Utilized for efficient and performant web applications.
 Redux RTK Query: Empowering efficient state management and data fetching.
@@ -24,7 +24,7 @@ Tailwind CSS: Streamlining responsive and customizable UI components.
 Material UI: Employed for consistent and user-friendly design components.
 Typescript: Enhancing code quality and maintainability with static typing.
 
-# Backend
+### Backend
 
 Node/Express: Powering the server-side logic and RESTful APIs.
 Typescript: Ensuring type safety and scalability in the backend codebase.
