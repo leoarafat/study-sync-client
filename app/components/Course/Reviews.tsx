@@ -27,10 +27,8 @@ const Reviews = (props: Props) => {
             </h3>
             <br />
             <p className={styles.label}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-              unde voluptatum dignissimos, nulla perferendis dolorem voluptate
-              nemo possimus magni deleniti natus accusamus officiis quasi nihil
-              commodi, praesentium quidem, quis doloribus?
+              Check out what our students are saying about their experience with
+              our courses!
             </p>
           </div>
         </div>
