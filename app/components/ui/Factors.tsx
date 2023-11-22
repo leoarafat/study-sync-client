@@ -23,6 +23,7 @@ const Factors = () => {
                 Become a pro
               </h1>
               <img
+                className="h-[280px]"
                 src="https://res.cloudinary.com/arafatleo/image/upload/v1700665134/Courses/Superhero-pose-in-action-on-transparent-background-PNG-removebg-preview_txe3ej.png"
                 alt="Pro"
               />
@@ -38,6 +39,7 @@ const Factors = () => {
                 Offer Jobs
               </h1>
               <img
+                className="h-[280px]"
                 src="https://res.cloudinary.com/arafatleo/image/upload/v1700665134/Courses/Work-Abroad-for-a-Year-removebg-preview_l8mlx6.png"
                 alt="Pro"
               />
@@ -53,7 +55,7 @@ const Factors = () => {
                 Unlimited Support
               </h1>
               <img
-                className="w-[250px]"
+                className="w-[280px]"
                 src="https://res.cloudinary.com/arafatleo/image/upload/v1700665134/Courses/pngtree-women-contact-support-flat-illustration-vector-png-image_2269867-removebg-preview_zesoa5.png"
                 alt="Pro"
               />
@@ -69,6 +71,7 @@ const Factors = () => {
                 Crash Course
               </h1>
               <img
+                className="h-[280px]"
                 src="https://res.cloudinary.com/arafatleo/image/upload/v1700665135/Courses/png-transparent-video-production-freemake-video-er-video-icon-free-angle-text-rectangle-removebg-preview_xc6j7o.png"
                 alt="Pro"
               />
