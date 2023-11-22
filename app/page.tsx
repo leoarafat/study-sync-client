@@ -9,6 +9,7 @@ import Reviews from "./components/Course/Reviews";
 import Faq from "./components/Route/Faq";
 import Footer from "./components/Route/Footer";
 import Factors from "./components/ui/Factors";
+import Technology from "./components/ui/Technology";
 
 interface props {}
 const Page: FC<props> = () => {
@@ -33,6 +34,7 @@ const Page: FC<props> = () => {
       <Hero />
       <Courses />
       <Factors />
+      <Technology />
       <Reviews />
       <Faq />
       <Footer />

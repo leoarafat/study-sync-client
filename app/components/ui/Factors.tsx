@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import "./Factors.css";
+import dynamic from "next/dynamic";
 
 const Factors = () => {
   return (
@@ -79,4 +80,7 @@ const Factors = () => {
   );
 };
 
-export default Factors;
+// export default Factors;
+export default dynamic(() => Promise.resolve(Factors), {
+  ssr: false,
+});
